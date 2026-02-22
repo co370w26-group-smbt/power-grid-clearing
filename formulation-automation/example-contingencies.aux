@@ -1,0 +1,14 @@
+Interface (Number,Name,MW,LimitUsed,Percent,MonDirection,MonBoth,LimitMWA,LimitMWB,LimitMWC,
+   LimitMWANeg,LimitMWBNeg,LimitMWCNeg,HasCTG,MWCTG,MWBase)
+{
+       1 "constraint 1"     12.3      0.0 "" "FROM -> TO" "NO "      0.0      0.0      0.0 "" "" "" "Yes"     12.3      0.0
+       2 "constraint 2"     11.5      0.0 "" "FROM -> TO" "NO "      0.0      0.0      0.0 "" "" "" "Yes  2"     11.5      0.0
+}
+
+InterfaceElement (InterfaceName,Element,MeterFar,Weight)
+{
+"constraint 1"                     "BRANCH 1 2 1"                   "NO "     1.000000
+"constraint 1"                     "BRANCHOPEN 10 11 1"             "" ""
+"constraint 2"                     "BRANCH 1 2 1"                   "NO "     1.000000
+"constraint 2"                     "BRANCHOPEN 2 4 1"               "" ""
+}
