@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\usepackage{enumitem}
+\title{FTR Clearance}
+
+\begin{document}
+
+\maketitle
+
+\section{Financial Transmission Rights (FTR) Clearance Formulation}
+\subsection{Given}
+We consider an FTR auction/clearing problem under a DC power-flow approximation.
+The market operator clears a set of FTR bids subject to \textbf{Simultaneous Feasibility Test (SFT)}
+constraints so that the awarded FTR portfolio is feasible with respect to transmission thermal limits
+in the base case and (optionally) under $N\!-\!1$ contingencies. The clearing maximizes total bid value
+(revenue/surplus) subject to network feasibility.
+
+\subsection {Parameters}
+\begin{itemize}
+  \item $\mathcal{N}$ : Set of buses (nodes)
+  \item $\mathcal{L}$ : Set of monitored transmission lines
+  \item $\mathcal{K}$ : Set of contingencies (optional). If base-case only, let $\mathcal{K}=\{\text{base}\}$.
+  \item $\mathcal{R}$ : Set of FTR bids (each bid is a directed point-to-point right)
+  \item $o(r)$ : Source node of bid $r\in\mathcal{R}$
+  \item $t(r)$ : Sink node of bid $r\in\mathcal{R}$
+  \item $\bar q_r \ge 0$ : Maximum MW quantity that can be awarded for bid $r$
+  \item $p_r$ : Bid price (\$/MW) for bid $r$ (willingness-to-pay per MW of FTR)
+  \item $F_l^{\max}$ : Thermal flow limit (MW) of line $l\in\mathcal{L}$
+  \item $PTDF^{(k)}_{l,s}$ : Shift factor of line $l$ w.r.t. node $s$ under contingency $k\in\mathcal{K}$
+
+\end{itemize}
+
+\subsection*{Variables}
+\begin{itemize}
+  \item $x_r \ge 0$ : Awarded MW quantity of FTR bid $r\in\mathcal{R}$
+\end{itemize}
+
+\subsection*{Objective Function}
+\begin{equation}
+\max_{x}\ \sum_{r\in\mathcal{R}} p_r\,x_r
+\tag{1}
+\end{equation}
+The objective maximizes total cleared bid value (auction surplus/revenue) subject to SFT feasibility.
+
+\subsection*{Constraints}
+
+\subsubsection*{1. Bid Quantity Limits}
+\begin{equation}
+0 \le x_r \le \bar q_r \quad \forall r\in\mathcal{R}
+\tag{2}
+\end{equation}
+Awards cannot exceed the bid quantity.
+
+\subsubsection*{2. SFT Line Flow Constraints (Base Case and Contingencies)}
+Each awarded FTR $r: o(r)\to t(r)$ is modeled as a \emph{virtual transaction} that injects at $o(r)$ and
+withdraws at $t(r)$. Under DC approximation, its contribution to line $l$ (in contingency $k$) is the PTDF
+difference:
+\[
+\Delta PTDF^{(k)}_{l,r} \;=\; PTDF^{(k)}_{l,t(r)} - PTDF^{(k)}_{l,o(r)}.
+\]
+The simultaneous feasibility test enforces that the \emph{net} effect of all awarded FTRs respects thermal limits:
+\begin{equation}
+- F_l^{\max}
+\le
+\sum_{r\in\mathcal{R}} \Big( PTDF^{(k)}_{l,t(r)} - PTDF^{(k)}_{l,o(r)} \Big)\,x_r
+\le
+F_l^{\max}
+\quad \forall l\in\mathcal{L},\ \forall k\in\mathcal{K}.
+\tag{3}
+\end{equation}
+
+\subsection*{Full FTR Clearance Formulation}
+\begin{align}
+\max_{x}\quad & \sum_{r\in\mathcal{R}} p_r\,x_r
+\tag{4}\\[4pt]
+\text{s.t.}\quad
+& 0 \le x_r \le \bar q_r \quad \forall r\in\mathcal{R}
+\tag{5}\\[4pt]
+& - F_l^{\max}
+\le
+\sum_{r\in\mathcal{R}} \Big( PTDF^{(k)}_{l,t(r)} - PTDF^{(k)}_{l,o(r)} \Big)\,x_r
+\le
+F_l^{\max}
+\quad \forall l\in\mathcal{L},\ \forall k\in\mathcal{K}.
+\tag{6}
+\end{align}
+
+\end{document}
