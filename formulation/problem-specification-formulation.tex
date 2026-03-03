@@ -30,9 +30,12 @@ Timothy Zheng\thanks{\texttt{t54zheng@uwaterloo.ca}}
 
 \begin{document}
 \maketitle
+\vspace{-1.75em}
 
 \section{Topic}
+\begin{center}
 Optimal Power Flow (Direct Current Approximation)
+\end{center}
 
 \begin{abstract}
 The North American electricity grid operates as a market on a nodal network of energy ``settlement points'' connected by capacity-constrained transmission lines. Participants are generators (gens) and loads, which buy and sell power in real time through an auction process.
@@ -60,7 +63,7 @@ In this project, we focus first on the Day-Ahead (DA) market clearing process. T
 
 It is the role of the RTO to clear this auction, ensuring grid stability while minimizing economic cost. Our goal is to produce the unit allocations (in MW) to each participant and clearing prices (Locational Marginal Prices) of electricity at every node, giving us transparency into the pricing mechanics of this market.
 
-The following is a 3-Node grid example which we will solve manually at the end of the problem specification.
+The following is a 3-Node grid example which we will solve to motivate the problem description.
 
 \subsection{3-Node Grid Example}
 \begin{center}
@@ -69,13 +72,13 @@ The following is a 3-Node grid example which we will solve manually at the end o
   \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
   \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
 
-  \draw[thick] (A) -- node[above] {$5\,\mathrm{MW}$} (B);
-  \draw[thick] (B) -- node[right] {$10\,\mathrm{MW}$} (C);
-  \draw[thick] (A) -- node[left] {$2\,\mathrm{MW}$} (C);
+  \draw[thick] (A) -- (B);
+  \draw[thick] (B) -- (C);
+  \draw[thick] (A) -- (C);
 
   \node[align=left] at (-1.8,2.3) {Gen 1\\Load 1};
-  \node[align=left] at (6.9,2.3) {Gen 2\\Load 3\\Load 4};
-  \node[align=left] at (2.5,-1.1) {Load 2, Load 5};
+  \node[align=left] at (6.9,2.3) {Gen 2};
+  \node[align=left] at (2.5,-1.1) {Gen 3\\Load 2, Load 3};
 \end{tikzpicture}
 \end{center}
 
@@ -87,27 +90,25 @@ Imagine that in our single DA auction, we have the following supply offers.
 \toprule
 Generator & Node & Offer price (\$/MWh) & Max supply (MW) \\
 \midrule
-Gen 1 & $A$ & 20 & 12 \\
-Gen 2 & $B$ & 45 & 10 \\
+Gen 1 & $A$ & \$5.00 & 2 \\
+Gen 2 & $B$ & \$10.00 & 10 \\
+Gen 3 & $C$ & \$7.50 & 0.5 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 and fixed load demand (MUST be filled at economic price):
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabular}{lccc}
 \toprule
-Load & Node & Demand (MW) \\
+Load & Node & Demand (MW) & Bid (\$/MWh) \\
 \midrule
-Load 1 & $A$ & 1 \\
-Load 2 & $C$ & 5 \\
-Load 3 & $B$ & 2 \\
-Load 4 & $B$ & 2 \\
-Load 5 & $C$ & 6 \\
+Load 1 & $A$ & 1 & \$6.50 \\
+Load 2 & $C$ & 2 & \$7.50 \\
+Load 3 & $C$ & 1.5 & \$10.00 \\
 \bottomrule
 \end{tabular}
 \end{center}
-
 
 \section{Data Sources}
 Most real-world grid models are confidential, kept behind non-disclosure agreements due to their sensitivity in relation to national security.\footnote{``Electronic copies of the SPP transmission map are currently available to those that provide an Non-Disclosure Agreement (NDA) and appropriate business justification.'', Southwest Power Pool} Therefore for the purpose of this assignment we use the IEEE N-bus systems\footnote{\url{https://github.com/ITI/models/tree/master/electric-grid/physical/reference}} which serve as reference examples to real-world grids as they exist today.
@@ -126,9 +127,14 @@ Constraints are defined in \texttt{branches.csv}; see the appendix table preview
 \section{Contingencies and Monitored Lines}
 The RTO also has the additional responsibility to ensure there is no overload across any transmission line in the event an unplanned outage occurs. This is a somewhat common occurrence, as transmission lines can go out for reasons such as wear and tear, extreme weather, trees falling on lines, or circuit breakers being tripped due to line overload. Grid overload can result in temporary power outages, and in severe cases, cascading failure and large-scale blackouts as any significant deviation from the expected generation and load balance can throw off the grid's frequency, damage equipment, and incur high costs to re-sync and restart generators.
 
-Contingencies are always defined with reference to a monitored line. That is, for each contingency and monitored line pair, we open the contingency (so flow across that contingency is 0), and then figure out what the power flow across the rest network will be under the optimized unit allocation. The flow must not exceed the flow limit (constraint) on the monitored line.
+Contingencies are always defined with reference to a monitored line. That is, for each contingency and monitored line pair, we open the contingency (flow across that contingency is 0), and then figure out what the power flow across the rest network will be under the optimized unit allocation. The flow must not exceed the flow limit (constraint) on the monitored line.
 
-The solution employed by RTOs is to evaluate this set of all possible contingencies concurrently, and ensure any cleared auction results in a grid that is stable even if any of the contingencies are activated.
+
+% Note, right below is the old sentance,the next sentance after is the new one. 
+% The solution employed by RTOs is to evaluate this set of all possible contingencies concurrently, and ensure any cleared auction results in a grid that is stable even if any of the contingencies are activated.
+
+
+RTOs evaluate all contingencies concurrently and ensure any cleared auction remains stable even if any contingency is activated.
 
 \section{Shift Factor Calculation}
 Power Transfer Distribution Factors, a.k.a Shift Factors (sf) are coefficients describing what fraction of electricity will flow through a certain branch (which could comprise multiple lines) if 1 additional MW is injected into the source node and 1 additional MW is withdrawn from the sink node.
@@ -139,8 +145,6 @@ That is, in the PowerWorld data, shift factors are defined as $\text{sf}_{i \rig
 
 Then we can derive for any two nodes $a$, $b$ in the network $\text{sf}_{a \rightarrow b} = \text{sf}_{a \rightarrow k} - \text{sf}_{b \rightarrow k}$
 
-
-\newpage
 \section{Day-Ahead Clearing process}
 
 Ignoring the objective, currently we try to optimize under X, a matrix with the unit allocations for each participant on each node.
@@ -167,7 +171,6 @@ After solving the LP, we will record $\lambda$ and the vector $\{\mu_l\}_{l\in\t
   \mathrm{LMP}_i = \lambda + \sum_{l\in\text{Lines}} \left(\mathrm{PTDF}_{l,i}\,\mu_l\right).
 \]
 
-\newpage
 \section{Locational Marginal Price Calculation}
 
 For our project, the locational marginal price (LMP) at bus $i$ is the DC approximation:
@@ -195,6 +198,7 @@ Congestion is only non-zero in the case where constraints in the DA clearance ar
 The trading of these contracts does not affect the underlying power market, however it is a common tool used by market participants to hedge their operations against congestion costs. If the difference is positive, the contract holder is paid by the RTO. If the difference is negative, the contract holder is obligated to pay the RTO the difference. For example, a utility provider may purchase FTRs to guarantee their customers a fixed price for electricity, which is preferred to power prices that fluctuate daily and are unpredictable. Power plants may also purchase these contracts to guarantee a sale price to lock in their profit margins.
 
 \newpage
+
 \section{FTR Clearance}
 The clearing process is formally defined in the references in the Iowa State paper (Ma, et al.) As a summary, the FTR clearing process is mostly similar to the DA clearing process however the unit allocation is not bounded by the generation/demand capacity, but instead the amount of bids and offers, ultimately capped by the transmission capacity of a branch. For example, on a line going from node $A \rightarrow B$ with capacity $100\text{MW}$, up to $150\text{MW}$ of capacity can be cleared for that line, given that for the $50\text{MW}$ of excess capacity sold, there are at least $50\text{MW}$ cleared for $B \rightarrow A$.
 
@@ -204,8 +208,9 @@ Since the RTO only needs to pay out (or receive payment) from the derivative in 
 
 \textbf{Why is congestion rent positive? } Generators sometimes sell at a lower price at their pricing node, but electricity purchased at another node (suppose this node has no generation) will be more expensive due to demand at a supply-constrained node; then the buyers pay a higher LMP while the seller only receives the cheaper node's LMP. The "profit" generated by the RTO goes straight into paying FTRs.
 
-\section{Full worked example (end-to-end)}
-In this example, it is relatively easy to come up with an optimal solution by inspection.
+\textbf{Potential extensions:} Add already cleared capacity from previous action round, and bidding on node pairs that are non-adjacent.
+
+\section{Basic End-to-End Example}
 
 Note the clearing process flows in the following manner:
 
@@ -222,14 +227,242 @@ Note the clearing process flows in the following manner:
 \end{tikzpicture}
 \end{center}
 
-The DA clearing process works as follows:
+
+% Insert here
+
+\subsection{DA Clearance (Worked Notes)}
+
+\subsubsection*{1) DA Clearance}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+  \node[draw, circle, minimum size=0.9cm] (A) at (0,2.2) {A};
+  \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
+  \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
+
+  \draw[thick] (A) -- (B);
+  \draw[thick] (B) -- (C);
+  \draw[thick] (A) -- (C);
+
+  \node[align=left] at (-1.8,2.3) {Gen 1\\Load 1};
+  \node[align=left] at (6.9,2.3) {Gen 2};
+  \node[align=left] at (2.5,-1.1) {Gen 3\\Load 2, Load 3};
+\end{tikzpicture}
+\end{center}
+
+\textcolor{purple}{Note that at each settlement point, buyers and sellers can transact unlimited amounts of power.}
 
 \begin{itemize}
-    \item \textbf{}
+  \item At node $A$, $1\,\mathrm{MW}$ is demanded.
+  \item At node $B$, $0\,\mathrm{MW}$ is demanded.
+  \item At node $C$, $3\,\mathrm{MW}$ is demanded.
 \end{itemize}
 
+\textcolor{blue}{Note that when Gen 1 produces $1\,\mathrm{MW}$, it cannot control which line the power flows through. Instead, the $1\,\mathrm{MW}$ generated by Gen 1 flows through each line according to its shift factors (determined by the electrical properties of the transmission lines, voltage phase, etc.). The calculation of these shift factors is done by PowerWorld.}
 
-\textbf{Potential extensions:} Add already cleared capacity from previous action rounds, bidding on node pairs that are non-adjacent.
+For the sake of example, suppose shift factors are (with $1\,\mathrm{MW}$ injected into $A$ and withdrawn from $C$):
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $A\rightarrow B$ & $B\rightarrow C$ & $A\rightarrow C$ \\
+\midrule
+Shift factor & 0.1 & 0.1 & 0.9 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+So, $1\,\mathrm{MW}$ injected in $A$ and withdrawn in $C$ flows as follows:
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={font=\small}, >=stealth]
+  \node[draw, circle, minimum size=0.9cm] (A) at (0,2.2) {A};
+  \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
+  \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
+
+  \draw[thick] (A) -- (B);
+  \draw[thick] (B) -- (C);
+  \draw[thick] (A) -- (C);
+
+  \draw[->, very thick, red!80!black] (A) -- node[above=2pt, red!80!black] {$0.1\,\mathrm{MW}$} (B);
+  \draw[->, very thick, red!80!black] (A) -- node[left=2pt, red!80!black] {$0.9\,\mathrm{MW}$} (C);
+  \draw[->, very thick, red!80!black] (B) -- node[right=2pt, red!80!black] {$0.1\,\mathrm{MW}$} (C);
+
+  \node[red!80!black] at (-0.8,2.6) {$+1\,\mathrm{MW}$};
+  \node[red!80!black] at (3.4,-0.8) {$-1\,\mathrm{MW}$};
+\end{tikzpicture}
+\end{center}
+
+We calculate shift factors for all other combinations of injection/withdrawal points to calculate what the total flow will be.
+
+\subsubsection*{Clearing Logic}
+
+Note the ISO balances the grid by settling the auction, such that willing buyers buy the most electricity at the best prices. Then the grid provides a feasible generation/consumption schedule to cleared participants.
+
+Consider the following clearing logic, which is easier to understand:
+\begin{itemize}
+  \item Load 1 is willing to pay up to \$6.50, but max offer price is only \$5, so Load 1 will pay only \$5.00/MW.
+  \item Load 2 is willing to pay \$7.50. It looks like it can buy cheaper power at \$5 from Gen 1, but is being outcompeted by Load 3. However, it looks like there is $0.5\,\mathrm{MW}$ Load 2 can still buy from Gen 1. Can it really?
+\end{itemize}
+
+Here we have to consider shift factors and the $N$-$1$ contingency check. That is, the final allocation has to be feasible even if every possible line outage occurs. That is, our solution has to be feasible in:
+
+\begin{center}
+\begin{minipage}[t]{0.31\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+  \node (A) at (0,2.2) {$A$};
+  \node (B) at (4.5,2.2) {$B$};
+  \node (C) at (2.25,0) {$C$};
+
+  \draw[thick] (A) -- node[above] {$2\,\mathrm{MW}$} (B);
+  \draw[thick] (A) -- node[left] {$2\,\mathrm{MW}$} (C);
+
+  \draw[red!80!black, very thick, dashed] (B) -- (C);
+\end{tikzpicture}
+
+\vspace{0.15em}
+\textcolor{red!80!black}{$B$--$C$ down}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+  \node (A) at (0,2.2) {$A$};
+  \node (B) at (4.5,2.2) {$B$};
+  \node (C) at (2.25,0) {$C$};
+
+  \draw[thick] (A) -- node[left] {$2\,\mathrm{MW}$} (C);
+  \draw[thick] (B) -- node[right] {$10\,\mathrm{MW}$} (C);
+
+  \draw[red!80!black, very thick, dashed] (A) -- (B);
+\end{tikzpicture}
+
+\vspace{0.15em}
+\textcolor{red!80!black}{$A$--$B$ down}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+  \node (A) at (0,2.2) {$A$};
+  \node (B) at (4.5,2.2) {$B$};
+  \node (C) at (2.25,0) {$C$};
+
+  \draw[thick] (A) -- node[above] {$2\,\mathrm{MW}$} (B);
+  \draw[thick] (B) -- node[right] {$10\,\mathrm{MW}$} (C);
+
+  \draw[red!80!black, very thick, dashed] (A) -- (C);
+\end{tikzpicture}
+
+\vspace{0.15em}
+\textcolor{red!80!black}{$A$--$C$ down}
+\end{minipage}
+\end{center}
+
+Note we are constrained by the $A$--$B$ down case, with Gen 1 generating $3\,\mathrm{MW}$. $1\,\mathrm{MW}$ is consumed by Load 1 directly connected, and the remaining $2\,\mathrm{MW}$ flows as follows:
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={font=\small}, >=stealth]
+  \node[draw, circle, minimum size=0.9cm] (A) at (0,2.2) {A};
+  \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
+  \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
+
+  \draw[thick] (A) -- (B);
+  \draw[thick] (B) -- (C);
+  \draw[thick] (A) -- (C);
+
+  \draw[->, very thick, red!80!black] (A) -- node[above=2pt, red!80!black] {$0.2\,\mathrm{MW}$} (B);
+  \draw[->, very thick, red!80!black] (A) -- node[left=2pt, red!80!black] {$1.8\,\mathrm{MW}$} (C);
+  \draw[<-, very thick, red!80!black] (C) -- node[right=2pt, red!80!black] {$0.2\,\mathrm{MW}$} (B);
+
+  \node[red!80!black] at (-0.8,2.6) {$+2\,\mathrm{MW}$};
+  \node[red!80!black] at (3.4,-0.8) {$-2\,\mathrm{MW}$};
+\end{tikzpicture}
+\end{center}
+
+\textcolor{blue}{Note that even though $0.2\,\mathrm{MW}$ can still flow into $A$--$C$ (so $0.2/0.9 = 0.22\,\mathrm{MW}$ more can be generated), if any line goes down, then the system will overload, potentially resulting in catastrophic failure.}
+
+\subsubsection*{Auction Clearance}
+
+Therefore, the clearance at node $C$ sorts bidders by price, and allocates the $2.5\,\mathrm{MW}$ (including $0.5\,\mathrm{MW}$ from Gen 3) to customers.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Load & Quantity & Bid price & Status \\
+\midrule
+Load 3 & $1.5\,\mathrm{MW}$ & \$10.00/MW & Fully cleared \\
+Load 2 & $2.0\,\mathrm{MW}$ & \$7.50/MW & Partially cleared for remaining $1\,\mathrm{MW}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{Auction Results Chart}
+
+\begin{center}
+\begin{tikzpicture}[font=\small]
+  % Left panel: allocated MW
+  \begin{scope}[xshift=0cm]
+    \node[font=\bfseries] at (3.1,4.9) {Allocated MW by Load};
+    \draw[->] (0,0) -- (0,4.4) node[above] {MW};
+    \draw[->] (0,0) -- (6.5,0);
+
+    \foreach \y in {0,0.5,...,4} {
+      \draw[gray!20] (0,\y) -- (6.2,\y);
+    }
+    \foreach \y/\label in {0/0,1/1,2/2,3/3,4/4} {
+      \node[left] at (0,\y) {\label};
+    }
+
+    \fill[blue!45] (0.7,0) rectangle (1.8,1.0);
+    \fill[blue!45] (2.6,0) rectangle (3.7,1.0);
+    \fill[blue!45] (4.5,0) rectangle (5.6,1.5);
+
+    \node[above] at (1.25,1.0) {$1.0$};
+    \node[above] at (3.15,1.0) {$1.0$};
+    \node[above] at (5.05,1.5) {$1.5$};
+
+    \node[below] at (1.25,0) {Load 1};
+    \node[below] at (3.15,0) {Load 2};
+    \node[below] at (5.05,0) {Load 3};
+  \end{scope}
+
+  % Right panel: clearing price
+  \begin{scope}[xshift=7.9cm]
+    \node[font=\bfseries] at (3.1,4.9) {Final Price by Load};
+    \draw[->] (0,0) -- (0,4.4) node[above] {\$/MW};
+    \draw[->] (0,0) -- (6.5,0);
+
+    \foreach \y in {0,1,2,3,4} {
+      \draw[gray!20] (0,\y) -- (6.2,\y);
+    }
+    \foreach \y/\label in {0/0,1/2.5,2/5.0,3/7.5,4/10.0} {
+      \node[left] at (0,\y) {\label};
+    }
+
+    \fill[orange!60] (0.7,0) rectangle (1.8,2.0);
+    \fill[orange!60] (2.6,0) rectangle (3.7,3.0);
+    \fill[orange!60] (4.5,0) rectangle (5.6,3.0);
+
+    \node[above] at (1.25,2.0) {\$5.00};
+    \node[above] at (3.15,3.0) {\$7.50};
+    \node[above] at (5.05,3.0) {\$7.50};
+
+    \node[below] at (1.25,0) {Load 1};
+    \node[below] at (3.15,0) {Load 2};
+    \node[below] at (5.05,0) {Load 3};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\textit{Chart interpretation:} Load 2 bids for $2\,\mathrm{MW}$ but receives $1\,\mathrm{MW}$ (partial clearance), while the final market-clearing price at node $C$ is \$7.50/MW for both cleared node-$C$ loads.
+
+And importantly, the auction clears at \$7.50/MW, despite the fact that $2/2.5\,\mathrm{MW}$ came from cheaper Gen 1.
+
+Load 3 was willing to pay for \$10.00, but ended up not being the minimum cleared bid, so it only needs to pay the final clearing price of \$7.50/MW too, just as a result of the Dutch auction mechanism.
+
+\newpage
 
 \section{DA Clearance LP Formulation}
 
@@ -346,7 +579,7 @@ F_l^{\max}
  
 Ensures no transmission line exceeds its thermal rating under normal operating conditions.
 
-\subsection{Contingency Constraints (N-1 Security)}
+\subsection{ Contingency Constraints (N-1 Security)}
 
 \begin{equation}
 - F_l^{\max}
@@ -361,7 +594,7 @@ F_l^{\max}
 Guarantees that the chosen dispatch remains feasible if any single contingency occurs.  
 The same generation dispatch must satisfy all contingency flow limits (no corrective redispatch).
 
-\subsection{Full SCED Formulation}
+\subsection{ Full SCED Formulation}
 
 \begin{align}
 \min_{g,d} \quad
@@ -427,28 +660,28 @@ in the base case and (optionally) under $N\!-\!1$ contingencies. The clearing ma
 
 \end{itemize}
 
-\subsection*{Variables}
+\subsection{Variables}
 \begin{itemize}
   \item $x_r \ge 0$ : Awarded MW quantity of FTR bid $r\in\mathcal{R}$
 \end{itemize}
 
-\subsection*{Objective Function}
+\subsection{Objective Function}
 \begin{equation}
 \max_{x}\ \sum_{r\in\mathcal{R}} p_r\,x_r
 \tag{1}
 \end{equation}
 The objective maximizes total cleared bid value (auction surplus/revenue) subject to SFT feasibility.
 
-\subsection*{Constraints}
+\subsection{Constraints}
 
-\subsubsection*{1. Bid Quantity Limits}
+\subsubsection{Bid Quantity Limits}
 \begin{equation}
 0 \le x_r \le \bar q_r \quad \forall r\in\mathcal{R}
 \tag{2}
 \end{equation}
 Awards cannot exceed the bid quantity.
 
-\subsubsection*{2. SFT Line Flow Constraints (Base Case and Contingencies)}
+\subsubsection{SFT Line Flow Constraints (Base Case and Contingencies)}
 Each awarded FTR $r: o(r)\to t(r)$ is modeled as a \emph{virtual transaction} that injects at $o(r)$ and
 withdraws at $t(r)$. Under DC approximation, its contribution to line $l$ (in contingency $k$) is the PTDF
 difference:
@@ -466,7 +699,7 @@ F_l^{\max}
 \tag{3}
 \end{equation}
 
-\subsection*{Full FTR Clearance Formulation}
+\subsection{Full FTR Clearance Formulation}
 \begin{align}
 \max_{x}\quad & \sum_{r\in\mathcal{R}} p_r\,x_r
 \tag{4}\\[4pt]
@@ -481,16 +714,15 @@ F_l^{\max}
 \quad \forall l\in\mathcal{L},\ \forall k\in\mathcal{K}.
 \tag{6}
 \end{align}
+
+
 \newpage
 
-\section{Results}
-\textbf{TODO:} Implement in Python, using data in appendix. Collect and Interpret Results
+\section{Proposal for the Rest of Project}
 
-\section{IP Formulation for DA / FTR (first extension)}
-\textbf{TODO:} Both DA and FTR markets require users to bid on a curve, giving (pi, qi) price, quantity pairs. We find an optimal solution such that the result is an integer multiple of $0.1\text{MW}$ (the base unit).
-
-\section{Other Extensions}
+\section{Potential Extensions}
 \begin{enumerate}
+    \item (IP Formulation): Both DA and FTR markets require users to bid on a curve, giving (pi, qi) price, quantity pairs. We find an optimal solution such that the result is an integer multiple of $0.1\text{MW}$ (the base unit).
     \item MIP for unit allocation given that gens have startup cost, cost-curves
     \item Sensitivity analysis (possible worst states of the grid -> we want to guarantee grid stability.) Which lines can cause the greatest price impact if they suddenly go out for an unexplained reason?
 \end{enumerate}
