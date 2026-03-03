@@ -59,56 +59,22 @@ The goal of this project is to simulate an end-to-end market clearing process fo
 
 
 
-In this project, we focus first on the Day-Ahead (DA) market clearing process. The DA market clearing process involves the grid operator collecting bids from generators (to sell) and loads (to buy) electricity from pre-specified settlement points (pricing nodes) in the power grid for the next 24 hours. In this market, virtual traders also purchase power allocation to be sold later in the real-time market, which settles every 5 minutes in real-time. We decided that this application is out of scope for this assignment and instead we only focus on DA settlement for power and financial derivatives.
+In this project, we focus first on the Day-Ahead (DA) market clearing process, then the clearing of derivative contracts called FTRs. The DA market clearing process involves the grid operator collecting bids from generators (to sell) and loads (to buy) electricity from pre-specified settlement points (pricing nodes) in the power grid for the next 24 hours. In this market, virtual traders also purchase power allocation to be sold later in the real-time market, which settles every 5 minutes in real-time. We decided that this application is out of scope for this assignment and instead we only focus on DA settlement for power and FTRs.
 
 It is the role of the RTO to clear this auction, ensuring grid stability while minimizing economic cost. Our goal is to produce the unit allocations (in MW) to each participant and clearing prices (Locational Marginal Prices) of electricity at every node, giving us transparency into the pricing mechanics of this market.
 
-The following is a 3-Node grid example which we will solve to motivate the problem description.
+\textbf{This proposal is structed into 4 sections.}
 
-\subsection{3-Node Grid Example}
-\begin{center}
-\begin{tikzpicture}[scale=1, every node/.style={font=\small}]
-  \node[draw, circle, minimum size=0.9cm] (A) at (0,2.2) {A};
-  \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
-  \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
+The first section (3-9) outline the mathematical intuition behind the dynamics of the market. In power markets, transmission is in real-time and cannot be easily directed through specific power lines, and instead follow fundemental laws of physics and must not be overloaded, or otherwise risk catastrophic failure. Therefore we calculate shift factors to account for physical electricity spread, and introduce safety tests which are done by RTOs during the electricity market clearing process to ensure grid stability and an efficient, competitive market. 
 
-  \draw[thick] (A) -- (B);
-  \draw[thick] (B) -- (C);
-  \draw[thick] (A) -- (C);
+In the second section (12) we motivate intuition by going through a simple worked example using an step-by-step approach which helps lead into the next section where we introduce the LP for systematically solving these optimization problems.
 
-  \node[align=left] at (-1.8,2.3) {Gen 1\\Load 1};
-  \node[align=left] at (6.9,2.3) {Gen 2};
-  \node[align=left] at (2.5,-1.1) {Gen 3\\Load 2, Load 3};
-\end{tikzpicture}
-\end{center}
+Sections 13, 14 outline the LP formulations for both the DA and FTR clearance processes.
 
+Finally, sections 15 and 16 outline our group's next steps an extensions.
 
-Imagine that in our single DA auction, we have the following supply offers.
+\newpage
 
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Generator & Node & Offer price (\$/MWh) & Max supply (MW) \\
-\midrule
-Gen 1 & $A$ & \$5.00 & 2 \\
-Gen 2 & $B$ & \$10.00 & 10 \\
-Gen 3 & $C$ & \$7.50 & 0.5 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-and fixed load demand (MUST be filled at economic price):
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Load & Node & Demand (MW) & Bid (\$/MWh) \\
-\midrule
-Load 1 & $A$ & 1 & \$6.50 \\
-Load 2 & $C$ & 2 & \$7.50 \\
-Load 3 & $C$ & 1.5 & \$10.00 \\
-\bottomrule
-\end{tabular}
-\end{center}
 
 \section{Data Sources}
 Most real-world grid models are confidential, kept behind non-disclosure agreements due to their sensitivity in relation to national security.\footnote{``Electronic copies of the SPP transmission map are currently available to those that provide an Non-Disclosure Agreement (NDA) and appropriate business justification.'', Southwest Power Pool} Therefore for the purpose of this assignment we use the IEEE N-bus systems\footnote{\url{https://github.com/ITI/models/tree/master/electric-grid/physical/reference}} which serve as reference examples to real-world grids as they exist today.
@@ -228,9 +194,50 @@ Note the clearing process flows in the following manner:
 \end{center}
 
 
-% Insert here
 
-\subsection{DA Clearance (Worked Notes)}
+\subsection{3-Node Grid Example}
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+  \node[draw, circle, minimum size=0.9cm] (A) at (0,2.2) {A};
+  \node[draw, circle, minimum size=0.9cm] (B) at (5,2.2) {B};
+  \node[draw, circle, minimum size=0.9cm] (C) at (2.5,0) {C};
+
+  \draw[thick] (A) -- (B);
+  \draw[thick] (B) -- (C);
+  \draw[thick] (A) -- (C);
+
+  \node[align=left] at (-1.8,2.3) {Gen 1\\Load 1};
+  \node[align=left] at (6.9,2.3) {Gen 2};
+  \node[align=left] at (2.5,-1.1) {Gen 3\\Load 2, Load 3};
+\end{tikzpicture}
+\end{center}
+
+Imagine that in our single DA auction, we have the following supply offers.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Generator & Node & Offer price (\$/MWh) & Max supply (MW) \\
+\midrule
+Gen 1 & $A$ & \$5.00 & 2 \\
+Gen 2 & $B$ & \$10.00 & 10 \\
+Gen 3 & $C$ & \$7.50 & 0.5 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+and fixed load demand (MUST be filled at economic price):
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Load & Node & Demand (MW) & Bid (\$/MWh) \\
+\midrule
+Load 1 & $A$ & 1 & \$6.50 \\
+Load 2 & $C$ & 2 & \$7.50 \\
+Load 3 & $C$ & 1.5 & \$10.00 \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \subsubsection*{1) DA Clearance}
 
@@ -252,10 +259,12 @@ Note the clearing process flows in the following manner:
 
 \textcolor{purple}{Note that at each settlement point, buyers and sellers can transact unlimited amounts of power.}
 
+\subsection*{Net Demands}
+
 \begin{itemize}
   \item At node $A$, $1\,\mathrm{MW}$ is demanded.
   \item At node $B$, $0\,\mathrm{MW}$ is demanded.
-  \item At node $C$, $3\,\mathrm{MW}$ is demanded.
+  \item At node $C$, $3.5\,\mathrm{MW}$ is demanded.
 \end{itemize}
 
 \textcolor{blue}{Note that when Gen 1 produces $1\,\mathrm{MW}$, it cannot control which line the power flows through. Instead, the $1\,\mathrm{MW}$ generated by Gen 1 flows through each line according to its shift factors (determined by the electrical properties of the transmission lines, voltage phase, etc.). The calculation of these shift factors is done by PowerWorld.}
@@ -297,8 +306,9 @@ We calculate shift factors for all other combinations of injection/withdrawal po
 
 \subsubsection*{Clearing Logic}
 
-Note the ISO balances the grid by settling the auction, such that willing buyers buy the most electricity at the best prices. Then the grid provides a feasible generation/consumption schedule to cleared participants.
+Note the RTO balances the grid by settling the auction, such that willing buyers buy the most electricity at the best prices. Then the grid provides a feasible generation/consumption schedule to cleared participants.
 
+\newpage
 Consider the following clearing logic, which is easier to understand:
 \begin{itemize}
   \item Load 1 is willing to pay up to \$6.50, but max offer price is only \$5, so Load 1 will pay only \$5.00/MW.
