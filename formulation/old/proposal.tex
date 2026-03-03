@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75\baselineskip}
+
+\title{CO 370 Winter 2026: Group Project Proposal}
+\author{
+Sa'ad Farooq\thanks{\texttt{s4farooq@uwaterloo.ca}} \and
+Maxwell Fang\thanks{\texttt{m34fang@uwaterloo.ca}} \and
+Buck Chen\thanks{\texttt{b39chen@uwaterloo.ca}} \and
+Timothy Zheng\thanks{\texttt{t54zheng@uwaterloo.ca}}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Topic}
+Optimal Power Flow (Direct Current Approximation)
+
+\begin{abstract}
+The North American electricity grid operates as a market on a nodal network of energy ``settlement points'' connected by capacity-constrained transmission lines. Participants are generators (gens) and loads, which buy and sell power in real time through an auction process.
+
+The role of the grid operator is to ensure economic dispatch of power through a clearing process that tells gens and loads how much power they are allowed (or obligated) to deposit or withdraw from the grid at each settlement point at any given time. This process occurs once every five minutes, ensuring that generation equals load across the entire network in five-minute intervals, which is typically sufficient for overall grid stability.
+
+We propose to write an LP formulation that emulates (approximately) the one run by the grid operator. Our group has access to grid data through a connection from a member's previous co-op. We believe this project is highly relevant given the rapid rise of electricity demand from data centers and manufacturing, and the rise of extreme weather that makes key grid elements more sensitive to catastrophic failures that can result in blackouts.
+
+Optimal power flow has a common approximation assuming DC power flow (the grid is actually run on AC), which allows us to formulate the problem as an LP in the DC model. We hope to implement advanced concepts in OR such as sensitivity analysis, graphs/network flow, and large-scale optimization.
+\end{abstract}
+
+\end{document}
