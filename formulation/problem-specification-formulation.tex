@@ -720,6 +720,18 @@ F_l^{\max}
 
 \section{Proposal for the Rest of Project}
 
+\subsection{Coding}
+Our group has already created a shared GitHub for the project, only accessible to group members, where we have already started to write code automating the Shift Factor calculations with PowerWorld. As a next step, we will use the data highlighted in the appendix, and implement LP formulations using Gurobi.
+
+\subsection{Data Generation}
+Our group still needs to come up with a systematic method to generate fake auction bid data, as real-world data is hidden behind NDA. This will allow us to complete the formulation.
+
+Moreover, it is possible that the current 24-bus model which we use from the IEEE models is not large enough for singificant computation. We will attempt larger models with Gurobi once our formulation implementation has been verified with this system. Our coding will be dynamic to account for the fact that we can simply import the larger models to create more complex problems.
+
+\subsection{Visualization}
+
+We hope to create visualizations to show the clearing result, highlighting the difference in LMPs which determine the payoffs for FTRs. At the end, we hope to demonstrate a thorough understanding of power market dynamics.
+
 \section{Potential Extensions}
 \begin{enumerate}
     \item (IP Formulation): Both DA and FTR markets require users to bid on a curve, giving (pi, qi) price, quantity pairs. We find an optimal solution such that the result is an integer multiple of $0.1\text{MW}$ (the base unit).
