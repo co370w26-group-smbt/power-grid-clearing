@@ -1,5 +1,4 @@
-Branch
-From Number,From Name,To Number,To Name,Circuit,Status,Branch Device Type,Xfrmr,R,X,B,Lim MVA A,Lim MVA B,Lim MVA C
+Branch From Number,From Name,To Number,To Name,Circuit,Status,Branch Device Type,Xfrmr,R,X,B,Lim MVA A,Lim MVA B,Lim MVA C
 1,1,2,2,1,Closed,Line,NO,0.00070,0.00123,0.00065,175.0,0.0,0.0
 1,1,5,5,1,Closed,Line,NO,0.02243,0.08490,0.02440,175.0,0.0,0.0
 2,2,4,4,1,Closed,Line,NO,0.03361,0.12730,0.03660,175.0,0.0,0.0
