@@ -46,13 +46,13 @@ B2,3,24,120,30
 3. If you want sample bid data, run:
 
 ```powershell
-python project\generate_bids.py
+python generate_bids.py
 ```
 
 You can also control how bid data is generated:
 
 ```powershell
-python project\generate_bids.py --count 80 --seed 370 --hotspot-share 0.85 --output project\bids.csv
+python generate_bids.py --count 80 --seed 370 --hotspot-share 0.85 --output project\bids.csv
 ```
 
 Arguments for `generate_bids.py`:
@@ -66,7 +66,7 @@ Arguments for `generate_bids.py`:
 4. Run the optimization:
 
 ```powershell
-python project\ftr_clearance.py
+python ftr_clearance.py
 ```
 Make sure you have `branches.csv`, `buses.csv`, `ptdf.csv` and `sf-contingencies.csv` in your folder.
 
