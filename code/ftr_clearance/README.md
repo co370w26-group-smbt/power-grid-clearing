@@ -42,7 +42,7 @@ B2,3,24,120,30
 ## How To Run
 
 1. Make sure `gurobipy` is installed and your Gurobi license works on your machine.
-2. Open PowerShell in the project root folder.
+2. Open PowerShell.
 3. If you want sample bid data, run:
 
 ```powershell
@@ -52,7 +52,7 @@ python generate_bids.py
 You can also control how bid data is generated:
 
 ```powershell
-python generate_bids.py --count 80 --seed 370 --hotspot-share 0.85 --output project\bids.csv
+python generate_bids.py --count 80 --seed 370 --hotspot-share 0.85 --output bids.csv
 ```
 
 Arguments for `generate_bids.py`:
