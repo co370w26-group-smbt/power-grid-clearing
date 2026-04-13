@@ -68,6 +68,7 @@ Arguments for `generate_bids.py`:
 ```powershell
 python project\ftr_clearance.py
 ```
+Make sure you have `branches.csv`, `buses.csv`, `ptdf.csv` and `sf-contingencies.csv` in your folder.
 
 ## Output
 
