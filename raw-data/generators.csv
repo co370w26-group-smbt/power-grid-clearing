@@ -1,4 +1,4 @@
-Gen_ID,Bus_Number,Cost,Pmin,Pmax
+Gen_ID,Bus Number,Cost,Pmin,Pmax
 G_1,1,20.00,0,45
 G_2,2,22.50,0,80
 G_7,7,25.00,0,80
