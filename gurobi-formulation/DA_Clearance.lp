@@ -1,4 +1,5 @@
 \ LP format - for model browsing. Use MPS format to capture full model detail.
+\ Signature: 0x2e4468f97f429b1b
 Minimize
   20 generators[0] + 22.5 generators[1] + 25 generators[2]
    + 27.5 generators[3] + 50 generators[4] + 30 generators[5]
@@ -13,17 +14,17 @@ Subject To
    - load_served[8] - load_served[9] - load_served[10] - load_served[11]
    - load_served[12] - load_served[13] - load_served[14] - load_served[15]
    = 0
- min_generator_capacity[0]: generators[0] >= 0
- min_generator_capacity[1]: generators[1] >= 0
- min_generator_capacity[2]: generators[2] >= 0
- min_generator_capacity[3]: generators[3] >= 0
- min_generator_capacity[4]: generators[4] >= 0
- min_generator_capacity[5]: generators[5] >= 0
- min_generator_capacity[6]: generators[6] >= 0
- min_generator_capacity[7]: generators[7] >= 0
- min_generator_capacity[8]: generators[8] >= 0
- min_generator_capacity[9]: generators[9] >= 0
- min_generator_capacity[10]: generators[10] >= 0
+ min_generator_capacity[0]: generators[0] >= 10
+ min_generator_capacity[1]: generators[1] >= 20
+ min_generator_capacity[2]: generators[2] >= 19
+ min_generator_capacity[3]: generators[3] >= 60
+ min_generator_capacity[4]: generators[4] >= 10
+ min_generator_capacity[5]: generators[5] >= 82
+ min_generator_capacity[6]: generators[6] >= 73
+ min_generator_capacity[7]: generators[7] >= 43
+ min_generator_capacity[8]: generators[8] >= 88
+ min_generator_capacity[9]: generators[9] >= 45
+ min_generator_capacity[10]: generators[10] >= 60
  max_generator_capacity[0]: generators[0] <= 45
  max_generator_capacity[1]: generators[1] <= 80
  max_generator_capacity[2]: generators[2] <= 80
