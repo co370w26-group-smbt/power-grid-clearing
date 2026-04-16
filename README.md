@@ -1,6 +1,28 @@
 # CO 370 Group Project
 > Group Members: Sa'ad Farooq, Maxwell Fang, Buck Chen, Timothy Zheng
 
+## Usage
+1. Install dependencies:
+    ## macOS
+    Open your terminal and run:
+    ```bash
+    curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
+    ```
+
+    ## Windows (Using Powershell)
+    ```powershell
+    powershell -ExecutionPolicy ByPass -c "irm [https://astral.sh/uv/install.ps1](https://astral.sh/uv/install.ps1) | iex"
+    ```
+
+    ## Sync dependencies:
+    ```bash
+    uv sync
+    ```
+
+2. With dependencies installed, run demo.ipynb, to run LPs on the sample 181-bus system.
+
+Extra: For exact formulation, see `da-clearance-lp` and `ftr_clearance`
+
 ## Project Structure
 
 ### raw-data
