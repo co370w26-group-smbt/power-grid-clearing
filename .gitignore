@@ -23,6 +23,6 @@ raw-data/larger-model-processed/118-bus/
 
 # lp files for 57-300bus models on the google drive instead
 # https://drive.google.com/drive/folders/1C6V5a8gNIA1WLTsRll5fyb1bNwp5DOq3?usp=sharing
-gurobi-formulation/results/57-bus/*.lp
-gurobi-formulation/results/118-bus/*.lp
-gurobi-formulation/results/300-bus/*.lp
+da-clearance-lp/results/57-bus/*.lp
+da-clearance-lp/results/118-bus/*.lp
+da-clearance-lp/results/300-bus/*.lp
