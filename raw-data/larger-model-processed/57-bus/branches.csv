@@ -1,0 +1,80 @@
+Branch
+From Number,From Name,To Number,To Name,Circuit,Status,Branch Device Type,Xfrmr,R,X,B,Lim MVA A,Lim MVA B,Lim MVA C
+1,Kanawha,2,Turner,1,Closed,Line,NO,0.00830,0.02800,0.12900,0.0,0.0,0.0
+1,Kanawha,15,Bus 15,1,Closed,Line,NO,0.01780,0.09100,0.09880,0.0,0.0,0.0
+1,Kanawha,16,Bus 16,1,Closed,Line,NO,0.04540,0.20600,0.05460,0.0,0.0,0.0
+1,Kanawha,17,Bus 17,1,Closed,Line,NO,0.02380,0.10800,0.02860,0.0,0.0,0.0
+2,Turner,3,Logan,1,Closed,Line,NO,0.02980,0.08500,0.08180,0.0,0.0,0.0
+3,Logan,4,Sprigg,1,Closed,Line,NO,0.01120,0.03660,0.03800,0.0,0.0,0.0
+3,Logan,15,Bus 15,1,Closed,Line,NO,0.01620,0.05300,0.05440,0.0,0.0,0.0
+4,Sprigg,5,Bus 5,1,Closed,Line,NO,0.06250,0.13200,0.02580,0.0,0.0,0.0
+4,Sprigg,6,Beaver C,1,Closed,Line,NO,0.04300,0.14800,0.03480,0.0,0.0,0.0
+4,Sprigg,18,Sprigg,1,Closed,Transformer,YES,0.00000,0.55500,0.00000,0.0,0.0,0.0
+5,Bus 5,6,Beaver C,1,Closed,Line,NO,0.03020,0.06410,0.01240,0.0,0.0,0.0
+6,Beaver C,7,Bus 7,1,Closed,Line,NO,0.02000,0.10200,0.02760,0.0,0.0,0.0
+6,Beaver C,8,Clinch R,1,Closed,Line,NO,0.03390,0.17300,0.04700,0.0,0.0,0.0
+7,Bus 7,8,Clinch R,1,Closed,Line,NO,0.01390,0.07120,0.01940,0.0,0.0,0.0
+7,Bus 7,29,Bus 29,1,Closed,Transformer,YES,0.00000,0.06480,0.00000,0.0,0.0,0.0
+8,Clinch R,9,Saltvill,1,Closed,Line,NO,0.00990,0.05050,0.05480,0.0,0.0,0.0
+9,Saltvill,10,Bus 10,1,Closed,Line,NO,0.03690,0.16790,0.04400,0.0,0.0,0.0
+9,Saltvill,11,Tazewell,1,Closed,Line,NO,0.02580,0.08480,0.02180,0.0,0.0,0.0
+9,Saltvill,12,Glen Lyn,1,Closed,Line,NO,0.06480,0.29500,0.07720,0.0,0.0,0.0
+9,Saltvill,13,Bus 13,1,Closed,Line,NO,0.04810,0.15800,0.04060,0.0,0.0,0.0
+9,Saltvill,55,Saltvill,1,Closed,Transformer,YES,0.00000,0.12050,0.00000,0.0,0.0,0.0
+10,Bus 10,12,Glen Lyn,1,Closed,Line,NO,0.02770,0.12620,0.03280,0.0,0.0,0.0
+10,Bus 10,51,Bus 51,1,Closed,Transformer,YES,0.00000,0.07120,0.00000,0.0,0.0,0.0
+11,Tazewell,13,Bus 13,1,Closed,Line,NO,0.02230,0.07320,0.01880,0.0,0.0,0.0
+11,Tazewell,41,Tazewell,1,Closed,Transformer,YES,0.00000,0.74900,0.00000,0.0,0.0,0.0
+11,Tazewell,43,Tazewell,1,Closed,Transformer,YES,0.00000,0.15300,0.00000,0.0,0.0,0.0
+12,Glen Lyn,13,Bus 13,1,Closed,Line,NO,0.01780,0.05800,0.06040,0.0,0.0,0.0
+12,Glen Lyn,16,Bus 16,1,Closed,Line,NO,0.01800,0.08130,0.02160,0.0,0.0,0.0
+12,Glen Lyn,17,Bus 17,1,Closed,Line,NO,0.03970,0.17900,0.04760,0.0,0.0,0.0
+13,Bus 13,14,Bus 14,1,Closed,Line,NO,0.01320,0.04340,0.01100,0.0,0.0,0.0
+13,Bus 13,15,Bus 15,1,Closed,Line,NO,0.02690,0.08690,0.02300,0.0,0.0,0.0
+13,Bus 13,49,Bus 49,1,Closed,Transformer,YES,0.00000,0.19100,0.00000,0.0,0.0,0.0
+14,Bus 14,15,Bus 15,1,Closed,Line,NO,0.01710,0.05470,0.01480,0.0,0.0,0.0
+14,Bus 14,46,Bus 46,1,Closed,Transformer,YES,0.00000,0.07350,0.00000,0.0,0.0,0.0
+15,Bus 15,45,Bus 45,1,Closed,Transformer,YES,0.00000,0.10420,0.00000,0.0,0.0,0.0
+18,Sprigg,19,Bus 19,1,Closed,Line,NO,0.46100,0.68500,0.00000,0.0,0.0,0.0
+19,Bus 19,20,Bus 20,1,Closed,Line,NO,0.28300,0.43400,0.00000,0.0,0.0,0.0
+21,Bus 21,20,Bus 20,1,Closed,Transformer,YES,0.00000,0.77670,0.00000,0.0,0.0,0.0
+21,Bus 21,22,Bus 22,1,Closed,Line,NO,0.07360,0.11700,0.00000,0.0,0.0,0.0
+22,Bus 22,23,Bus 23,1,Closed,Line,NO,0.00990,0.01520,0.00000,0.0,0.0,0.0
+22,Bus 22,38,Bus 38,1,Closed,Line,NO,0.01920,0.02950,0.00000,0.0,0.0,0.0
+23,Bus 23,24,Bus 24,1,Closed,Line,NO,0.16600,0.25600,0.00840,0.0,0.0,0.0
+24,Bus 24,25,Bus 25,1,Closed,Line,NO,0.00000,1.18200,0.00000,0.0,0.0,0.0
+24,Bus 24,26,Bus 26,1,Closed,Transformer,YES,0.00000,0.04730,0.00000,0.0,0.0,0.0
+25,Bus 25,30,Bus 30,1,Closed,Line,NO,0.13500,0.20200,0.00000,0.0,0.0,0.0
+26,Bus 26,27,Bus 27,1,Closed,Line,NO,0.16500,0.25400,0.00000,0.0,0.0,0.0
+27,Bus 27,28,Bus 28,1,Closed,Line,NO,0.06180,0.09540,0.00000,0.0,0.0,0.0
+28,Bus 28,29,Bus 29,1,Closed,Line,NO,0.04180,0.05870,0.00000,0.0,0.0,0.0
+29,Bus 29,52,Bus 52,1,Closed,Line,NO,0.14420,0.18700,0.00000,0.0,0.0,0.0
+30,Bus 30,31,Bus 31,1,Closed,Line,NO,0.32600,0.49700,0.00000,0.0,0.0,0.0
+31,Bus 31,32,Bus 32,1,Closed,Line,NO,0.50700,0.75500,0.00000,0.0,0.0,0.0
+32,Bus 32,33,Bus 33,1,Closed,Line,NO,0.03920,0.03600,0.00000,0.0,0.0,0.0
+34,Bus 34,32,Bus 32,1,Closed,Transformer,YES,0.00000,0.95300,0.00000,0.0,0.0,0.0
+34,Bus 34,35,Bus 35,1,Closed,Line,NO,0.05200,0.07800,0.00320,0.0,0.0,0.0
+35,Bus 35,36,Bus 36,1,Closed,Line,NO,0.04300,0.05370,0.00160,0.0,0.0,0.0
+36,Bus 36,37,Bus 37,1,Closed,Line,NO,0.02900,0.03660,0.00000,0.0,0.0,0.0
+36,Bus 36,40,Bus 40,1,Closed,Line,NO,0.03000,0.04660,0.00000,0.0,0.0,0.0
+37,Bus 37,38,Bus 38,1,Closed,Line,NO,0.06510,0.10090,0.00200,0.0,0.0,0.0
+37,Bus 37,39,Bus 39,1,Closed,Line,NO,0.02390,0.03790,0.00000,0.0,0.0,0.0
+38,Bus 38,44,Bus 44,1,Closed,Line,NO,0.02890,0.05850,0.00200,0.0,0.0,0.0
+38,Bus 38,48,Bus 48,1,Closed,Line,NO,0.03120,0.04820,0.00000,0.0,0.0,0.0
+38,Bus 38,49,Bus 49,1,Closed,Line,NO,0.11500,0.17700,0.00300,0.0,0.0,0.0
+39,Bus 39,57,Bus 57,1,Closed,Transformer,YES,0.00000,1.35500,0.00000,0.0,0.0,0.0
+40,Bus 40,56,Bus 56,1,Closed,Transformer,YES,0.00000,1.19500,0.00000,0.0,0.0,0.0
+41,Tazewell,42,Bus 42,1,Closed,Line,NO,0.20700,0.35200,0.00000,0.0,0.0,0.0
+41,Tazewell,43,Tazewell,1,Closed,Line,NO,0.00000,0.41200,0.00000,0.0,0.0,0.0
+44,Bus 44,45,Bus 45,1,Closed,Line,NO,0.06240,0.12420,0.00400,0.0,0.0,0.0
+46,Bus 46,47,Bus 47,1,Closed,Line,NO,0.02300,0.06800,0.00320,0.0,0.0,0.0
+47,Bus 47,48,Bus 48,1,Closed,Line,NO,0.01820,0.02330,0.00000,0.0,0.0,0.0
+48,Bus 48,49,Bus 49,1,Closed,Line,NO,0.08340,0.12900,0.00480,0.0,0.0,0.0
+49,Bus 49,50,Bus 50,1,Closed,Line,NO,0.08010,0.12800,0.00000,0.0,0.0,0.0
+50,Bus 50,51,Bus 51,1,Closed,Line,NO,0.13860,0.22000,0.00000,0.0,0.0,0.0
+52,Bus 52,53,Bus 53,1,Closed,Line,NO,0.07620,0.09840,0.00000,0.0,0.0,0.0
+53,Bus 53,54,Bus 54,1,Closed,Line,NO,0.18780,0.23200,0.00000,0.0,0.0,0.0
+54,Bus 54,55,Saltvill,1,Closed,Line,NO,0.17320,0.22650,0.00000,0.0,0.0,0.0
+56,Bus 56,41,Tazewell,1,Closed,Line,NO,0.55300,0.54900,0.00000,0.0,0.0,0.0
+56,Bus 56,42,Bus 42,1,Closed,Line,NO,0.21250,0.35400,0.00000,0.0,0.0,0.0
+57,Bus 57,56,Bus 56,1,Closed,Line,NO,0.17400,0.26000,0.00000,0.0,0.0,0.0

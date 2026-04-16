@@ -1,0 +1,180 @@
+From Number,From Name,To Number,To Name,Circuit,Status,Branch Device Type,Xfrmr,R,X,B,Lim MVA A,Lim MVA B,Lim MVA C
+1,Riversde,2,Pokagon,1,Closed,Line,NO,0.0303,0.0999,0.0254,260.0,0.0,0.0
+1,Riversde,3,HickryCk,1,Closed,Line,NO,0.0129,0.0424,0.01082,520.0,0.0,0.0
+2,Pokagon,12,TwinBrch,1,Closed,Line,NO,0.0187,0.0616,0.01572,520.0,0.0,0.0
+3,HickryCk,5,Olive,1,Closed,Line,NO,0.0241,0.108,0.0284,260.0,0.0,0.0
+3,HickryCk,12,TwinBrch,1,Closed,Line,NO,0.0484,0.16,0.0406,520.0,0.0,0.0
+4,NwCarlsl,5,Olive,1,Closed,Line,NO,0.00176,0.00798,0.0021,260.0,0.0,0.0
+4,NwCarlsl,11,SouthBnd,1,Closed,Line,NO,0.0209,0.0688,0.01748,260.0,0.0,0.0
+5,Olive,6,Kankakee,1,Closed,Line,NO,0.0119,0.054,0.01426,520.0,0.0,0.0
+5,Olive,11,SouthBnd,1,Closed,Line,NO,0.0203,0.0682,0.01738,260.0,0.0,0.0
+6,Kankakee,7,JacksnRd,1,Closed,Line,NO,0.00459,0.0208,0.0055,520.0,0.0,0.0
+7,JacksnRd,12,TwinBrch,1,Closed,Line,NO,0.00862,0.034,0.00874,520.0,0.0,0.0
+8,Olive,5,Olive,1,Closed,Transformer,YES,0.0,0.0267,0.0,260.0,0.0,0.0
+8,Olive,9,Bequine,1,Closed,Line,NO,0.00244,0.0305,1.162,520.0,0.0,0.0
+8,Olive,30,Sorenson,1,Closed,Line,NO,0.00431,0.0504,0.514,520.0,0.0,0.0
+9,Bequine,10,Breed,1,Closed,Line,NO,0.00258,0.0322,1.23,260.0,0.0,0.0
+11,SouthBnd,12,TwinBrch,1,Closed,Line,NO,0.00595,0.0196,0.00502,520.0,0.0,0.0
+11,SouthBnd,13,Concord,1,Closed,Line,NO,0.02225,0.0731,0.01876,520.0,0.0,0.0
+12,TwinBrch,14,GoshenJt,1,Closed,Line,NO,0.0215,0.0707,0.01816,520.0,0.0,0.0
+12,TwinBrch,16,N. E.,1,Closed,Line,NO,0.0212,0.0834,0.0214,260.0,0.0,0.0
+12,TwinBrch,117,Corey,1,Closed,Line,NO,0.0329,0.14,0.0358,260.0,0.0,0.0
+13,Concord,15,FtWayne,1,Closed,Line,NO,0.0744,0.2444,0.06268,520.0,0.0,0.0
+14,GoshenJt,15,FtWayne,1,Closed,Line,NO,0.0595,0.195,0.0502,260.0,0.0,0.0
+15,FtWayne,17,Sorenson,1,Closed,Line,NO,0.0132,0.0437,0.0444,520.0,0.0,0.0
+15,FtWayne,19,Lincoln,1,Closed,Line,NO,0.012,0.0394,0.0101,520.0,0.0,0.0
+15,FtWayne,33,Haviland,1,Closed,Line,NO,0.038,0.1244,0.03194,260.0,0.0,0.0
+16,N. E.,17,Sorenson,1,Closed,Line,NO,0.0454,0.1801,0.0466,260.0,0.0,0.0
+17,Sorenson,18,McKinley,1,Closed,Line,NO,0.0123,0.0505,0.01298,260.0,0.0,0.0
+17,Sorenson,31,DeerCrk,1,Closed,Line,NO,0.0474,0.1563,0.0399,260.0,0.0,0.0
+17,Sorenson,113,Deer Crk,1,Closed,Line,NO,0.00913,0.0301,0.00768,520.0,0.0,0.0
+18,McKinley,19,Lincoln,1,Closed,Line,NO,0.01119,0.0493,0.01142,520.0,0.0,0.0
+19,Lincoln,20,Adams,1,Closed,Line,NO,0.0252,0.117,0.0298,520.0,0.0,0.0
+19,Lincoln,34,Rockhill,1,Closed,Line,NO,0.0752,0.247,0.0632,260.0,0.0,0.0
+20,Adams,21,Jay,1,Closed,Line,NO,0.0183,0.0849,0.0216,260.0,0.0,0.0
+21,Jay,22,Randolph,1,Closed,Line,NO,0.0209,0.097,0.0246,520.0,0.0,0.0
+22,Randolph,23,CollCrnr,1,Closed,Line,NO,0.0342,0.159,0.0404,520.0,0.0,0.0
+23,CollCrnr,24,Trenton,1,Closed,Line,NO,0.0135,0.0492,0.0498,520.0,0.0,0.0
+23,CollCrnr,25,TannrsCk,1,Closed,Line,NO,0.0156,0.08,0.0864,260.0,0.0,0.0
+23,CollCrnr,32,Delaware,1,Closed,Line,NO,0.0317,0.1153,0.1173,260.0,0.0,0.0
+24,Trenton,70,Portsmth,1,Closed,Line,NO,0.00221,0.4115,0.10198,520.0,0.0,0.0
+24,Trenton,72,Hillsbro,1,Closed,Line,NO,0.0488,0.196,0.0488,520.0,0.0,0.0
+25,TannrsCk,27,Madison,1,Closed,Line,NO,0.0318,0.163,0.1764,520.0,0.0,0.0
+26,TannrsCk,25,TannrsCk,1,Closed,Transformer,YES,0.0,0.0382,0.0,260.0,0.0,0.0
+26,TannrsCk,30,Sorenson,1,Closed,Line,NO,0.00799,0.086,0.908,520.0,0.0,0.0
+27,Madison,28,Mullin,1,Closed,Line,NO,0.01913,0.0855,0.0216,520.0,0.0,0.0
+27,Madison,32,Delaware,1,Closed,Line,NO,0.0229,0.0755,0.01926,260.0,0.0,0.0
+27,Madison,115,Medford,1,Closed,Line,NO,0.0164,0.0741,0.01972,260.0,0.0,0.0
+28,Mullin,29,Grant,1,Closed,Line,NO,0.0237,0.0943,0.0238,520.0,0.0,0.0
+29,Grant,31,DeerCrk,1,Closed,Line,NO,0.0108,0.0331,0.0083,260.0,0.0,0.0
+30,Sorenson,17,Sorenson,1,Closed,Transformer,YES,0.0,0.0388,0.0,520.0,0.0,0.0
+30,Sorenson,38,EastLima,1,Closed,Line,NO,0.00464,0.054,0.422,520.0,0.0,0.0
+31,DeerCrk,32,Delaware,1,Closed,Line,NO,0.0298,0.0985,0.0251,260.0,0.0,0.0
+32,Delaware,113,Deer Crk,1,Closed,Line,NO,0.0615,0.203,0.0518,260.0,0.0,0.0
+32,Delaware,114,WMedford,1,Closed,Line,NO,0.0135,0.0612,0.01628,260.0,0.0,0.0
+33,Haviland,37,EastLima,1,Closed,Line,NO,0.0415,0.142,0.0366,520.0,0.0,0.0
+34,Rockhill,36,Sterling,1,Closed,Line,NO,0.00871,0.0268,0.00568,260.0,0.0,0.0
+34,Rockhill,37,EastLima,1,Closed,Line,NO,0.00256,0.0094,0.00984,520.0,0.0,0.0
+34,Rockhill,43,S.Kenton,1,Closed,Line,NO,0.0413,0.1681,0.04226,520.0,0.0,0.0
+35,WestLima,36,Sterling,1,Closed,Line,NO,0.00224,0.0102,0.00268,260.0,0.0,0.0
+35,WestLima,37,EastLima,1,Closed,Line,NO,0.011,0.0497,0.01318,520.0,0.0,0.0
+37,EastLima,39,NwLibrty,1,Closed,Line,NO,0.0321,0.106,0.027,260.0,0.0,0.0
+37,EastLima,40,West End,1,Closed,Line,NO,0.0593,0.168,0.042,520.0,0.0,0.0
+38,EastLima,37,EastLima,1,Closed,Transformer,YES,0.0,0.0375,0.0,260.0,0.0,0.0
+38,EastLima,65,Muskngum,1,Closed,Line,NO,0.00901,0.0986,1.046,260.0,0.0,0.0
+39,NwLibrty,40,West End,1,Closed,Line,NO,0.0184,0.0605,0.01552,260.0,0.0,0.0
+40,West End,41,S.Tiffin,1,Closed,Line,NO,0.0145,0.0487,0.01222,520.0,0.0,0.0
+40,West End,42,Howard,1,Closed,Line,NO,0.0555,0.183,0.0466,520.0,0.0,0.0
+41,S.Tiffin,42,Howard,1,Closed,Line,NO,0.041,0.135,0.0344,260.0,0.0,0.0
+42,Howard,49,Philo,1,Closed,Line,NO,0.0715,0.323,0.086,520.0,0.0,0.0
+43,S.Kenton,44,WMVernon,1,Closed,Line,NO,0.0608,0.2454,0.06068,260.0,0.0,0.0
+44,WMVernon,45,N.Newark,1,Closed,Line,NO,0.0224,0.0901,0.0224,260.0,0.0,0.0
+45,N.Newark,46,W.Lancst,1,Closed,Line,NO,0.04,0.1356,0.0332,260.0,0.0,0.0
+45,N.Newark,49,Philo,1,Closed,Line,NO,0.0684,0.186,0.0444,260.0,0.0,0.0
+46,W.Lancst,47,Crooksvl,1,Closed,Line,NO,0.038,0.127,0.0316,260.0,0.0,0.0
+46,W.Lancst,48,Zanesvll,1,Closed,Line,NO,0.0601,0.189,0.0472,520.0,0.0,0.0
+47,Crooksvl,49,Philo,1,Closed,Line,NO,0.0191,0.0625,0.01604,260.0,0.0,0.0
+47,Crooksvl,69,Sporn,1,Closed,Line,NO,0.0844,0.2778,0.07092,520.0,0.0,0.0
+48,Zanesvll,49,Philo,1,Closed,Line,NO,0.0179,0.0505,0.01258,520.0,0.0,0.0
+49,Philo,50,WCambrdg,1,Closed,Line,NO,0.0267,0.0752,0.01874,260.0,0.0,0.0
+49,Philo,51,Newcmrst,1,Closed,Line,NO,0.0486,0.137,0.0342,520.0,0.0,0.0
+49,Philo,54,Torrey,1,Closed,Line,NO,0.0869,0.291,0.073,520.0,0.0,0.0
+49,Philo,66,Muskngum,1,Closed,Line,NO,0.018,0.0919,0.0248,260.0,0.0,0.0
+49,Philo,69,Sporn,1,Closed,Line,NO,0.0985,0.324,0.0828,520.0,0.0,0.0
+50,WCambrdg,57,WNwPhil1,1,Closed,Line,NO,0.0474,0.134,0.0332,260.0,0.0,0.0
+51,Newcmrst,52,SCoshoct,1,Closed,Line,NO,0.0203,0.0588,0.01396,260.0,0.0,0.0
+51,Newcmrst,58,WNwPhil2,1,Closed,Line,NO,0.0255,0.0719,0.01788,260.0,0.0,0.0
+52,SCoshoct,53,Wooster,1,Closed,Line,NO,0.0405,0.1635,0.04058,520.0,0.0,0.0
+53,Wooster,54,Torrey,1,Closed,Line,NO,0.0263,0.122,0.031,260.0,0.0,0.0
+54,Torrey,55,Wagenhls,1,Closed,Line,NO,0.0169,0.0707,0.0202,260.0,0.0,0.0
+54,Torrey,56,Sunnysde,1,Closed,Line,NO,0.00275,0.00955,0.00732,260.0,0.0,0.0
+54,Torrey,59,Tidd,1,Closed,Line,NO,0.0503,0.2293,0.0598,260.0,0.0,0.0
+55,Wagenhls,56,Sunnysde,1,Closed,Line,NO,0.00488,0.0151,0.00374,260.0,0.0,0.0
+55,Wagenhls,59,Tidd,1,Closed,Line,NO,0.04739,0.2158,0.05646,260.0,0.0,0.0
+56,Sunnysde,57,WNwPhil1,1,Closed,Line,NO,0.0343,0.0966,0.0242,260.0,0.0,0.0
+56,Sunnysde,58,WNwPhil2,1,Closed,Line,NO,0.0343,0.0966,0.0242,520.0,0.0,0.0
+56,Sunnysde,59,Tidd,1,Closed,Line,NO,0.0803,0.239,0.0536,260.0,0.0,0.0
+59,Tidd,60,SWKammer,1,Closed,Line,NO,0.0317,0.145,0.0376,520.0,0.0,0.0
+59,Tidd,61,W.Kammer,1,Closed,Line,NO,0.0328,0.15,0.0388,520.0,0.0,0.0
+60,SWKammer,61,W.Kammer,1,Closed,Line,NO,0.00264,0.0135,0.01456,260.0,0.0,0.0
+60,SWKammer,62,Natrium,1,Closed,Line,NO,0.0123,0.0561,0.01468,260.0,0.0,0.0
+61,W.Kammer,62,Natrium,1,Closed,Line,NO,0.00824,0.0376,0.0098,520.0,0.0,0.0
+62,Natrium,66,Muskngum,1,Closed,Line,NO,0.0482,0.218,0.0578,260.0,0.0,0.0
+62,Natrium,67,Summerfl,1,Closed,Line,NO,0.0258,0.117,0.031,260.0,0.0,0.0
+63,Tidd,59,Tidd,1,Closed,Transformer,YES,0.0,0.0386,0.0,260.0,0.0,0.0
+63,Tidd,64,Kammer,1,Closed,Line,NO,0.00172,0.02,0.216,520.0,0.0,0.0
+64,Kammer,61,W.Kammer,1,Closed,Transformer,YES,0.0,0.0268,0.0,260.0,0.0,0.0
+64,Kammer,65,Muskngum,1,Closed,Line,NO,0.00269,0.0302,0.38,520.0,0.0,0.0
+65,Muskngum,66,Muskngum,1,Closed,Transformer,YES,0.0,0.037,0.0,260.0,0.0,0.0
+65,Muskngum,68,Sporn,1,Closed,Line,NO,0.00138,0.016,0.638,520.0,0.0,0.0
+66,Muskngum,67,Summerfl,1,Closed,Line,NO,0.0224,0.1015,0.02682,520.0,0.0,0.0
+68,Sporn,69,Sporn,1,Closed,Transformer,YES,0.0,0.037,0.0,260.0,0.0,0.0
+68,Sporn,81,Kanawha,1,Closed,Line,NO,0.00175,0.0202,0.808,520.0,0.0,0.0
+68,Sporn,116,KygerCrk,1,Closed,Line,NO,0.00034,0.00405,0.164,260.0,0.0,0.0
+69,Sporn,70,Portsmth,1,Closed,Line,NO,0.03,0.127,0.122,520.0,0.0,0.0
+69,Sporn,75,SthPoint,1,Closed,Line,NO,0.0405,0.122,0.124,520.0,0.0,0.0
+69,Sporn,77,Turner,1,Closed,Line,NO,0.0309,0.101,0.1038,520.0,0.0,0.0
+70,Portsmth,71,NPortsmt,1,Closed,Line,NO,0.00882,0.0355,0.00878,260.0,0.0,0.0
+70,Portsmth,74,Bellefnt,1,Closed,Line,NO,0.0401,0.1323,0.03368,260.0,0.0,0.0
+70,Portsmth,75,SthPoint,1,Closed,Line,NO,0.0428,0.141,0.036,520.0,0.0,0.0
+71,NPortsmt,72,Hillsbro,1,Closed,Line,NO,0.0446,0.18,0.04444,520.0,0.0,0.0
+71,NPortsmt,73,Sargents,1,Closed,Line,NO,0.00866,0.0454,0.01178,520.0,0.0,0.0
+74,Bellefnt,75,SthPoint,1,Closed,Line,NO,0.0123,0.0406,0.01034,520.0,0.0,0.0
+75,SthPoint,77,Turner,1,Closed,Line,NO,0.0601,0.1999,0.04978,520.0,0.0,0.0
+75,SthPoint,118,WHuntngd,1,Closed,Line,NO,0.0145,0.0481,0.01198,260.0,0.0,0.0
+76,Darrah,77,Turner,1,Closed,Line,NO,0.0444,0.148,0.0368,260.0,0.0,0.0
+76,Darrah,118,WHuntngd,1,Closed,Line,NO,0.0164,0.0544,0.01356,260.0,0.0,0.0
+77,Turner,78,Chemical,1,Closed,Line,NO,0.00376,0.0124,0.01264,260.0,0.0,0.0
+77,Turner,80,CabinCrk,1,Closed,Line,NO,0.0294,0.105,0.0228,520.0,0.0,0.0
+77,Turner,82,Logan,1,Closed,Line,NO,0.0298,0.0853,0.08174,520.0,0.0,0.0
+78,Chemical,79,CapitlHl,1,Closed,Line,NO,0.00546,0.0244,0.00648,520.0,0.0,0.0
+79,CapitlHl,80,CabinCrk,1,Closed,Line,NO,0.0156,0.0704,0.0187,520.0,0.0,0.0
+80,CabinCrk,96,Baileysv,1,Closed,Line,NO,0.0356,0.182,0.0494,520.0,0.0,0.0
+80,CabinCrk,97,Sundial,1,Closed,Line,NO,0.0183,0.0934,0.0254,260.0,0.0,0.0
+80,CabinCrk,98,Bradley,1,Closed,Line,NO,0.0238,0.108,0.0286,260.0,0.0,0.0
+80,CabinCrk,99,Hinton,1,Closed,Line,NO,0.0454,0.206,0.0546,260.0,0.0,0.0
+81,Kanawha,80,CabinCrk,1,Closed,Transformer,YES,0.0,0.037,0.0,260.0,0.0,0.0
+82,Logan,83,Sprigg,1,Closed,Line,NO,0.0112,0.03665,0.03796,520.0,0.0,0.0
+82,Logan,96,Baileysv,1,Closed,Line,NO,0.0162,0.053,0.0544,520.0,0.0,0.0
+83,Sprigg,84,BetsyLne,1,Closed,Line,NO,0.0625,0.132,0.0258,260.0,0.0,0.0
+83,Sprigg,85,BeaverCk,1,Closed,Line,NO,0.043,0.148,0.0348,520.0,0.0,0.0
+84,BetsyLne,85,BeaverCk,1,Closed,Line,NO,0.0302,0.0641,0.01234,260.0,0.0,0.0
+85,BeaverCk,86,Hazard,1,Closed,Line,NO,0.035,0.123,0.0276,260.0,0.0,0.0
+85,BeaverCk,88,Fremont,1,Closed,Line,NO,0.02,0.102,0.0276,520.0,0.0,0.0
+85,BeaverCk,89,ClinchRv,1,Closed,Line,NO,0.0239,0.173,0.047,520.0,0.0,0.0
+86,Hazard,87,Pinevlle,1,Closed,Line,NO,0.02828,0.2074,0.0445,260.0,0.0,0.0
+88,Fremont,89,ClinchRv,1,Closed,Line,NO,0.0139,0.0712,0.01934,520.0,0.0,0.0
+89,ClinchRv,90,Holston,1,Closed,Line,NO,0.0238,0.0997,0.106,520.0,0.0,0.0
+89,ClinchRv,92,Saltvlle,1,Closed,Line,NO,0.0393,0.1581,0.0414,520.0,0.0,0.0
+90,Holston,91,HolstonT,1,Closed,Line,NO,0.0254,0.0836,0.0214,260.0,0.0,0.0
+91,HolstonT,92,Saltvlle,1,Closed,Line,NO,0.0387,0.1272,0.03268,520.0,0.0,0.0
+92,Saltvlle,93,Tazewell,1,Closed,Line,NO,0.0258,0.0848,0.0218,260.0,0.0,0.0
+92,Saltvlle,94,Switchbk,1,Closed,Line,NO,0.0481,0.158,0.0406,520.0,0.0,0.0
+92,Saltvlle,100,Glen Lyn,1,Closed,Line,NO,0.0648,0.295,0.0472,260.0,0.0,0.0
+92,Saltvlle,102,Smythe,1,Closed,Line,NO,0.0123,0.0559,0.01464,520.0,0.0,0.0
+93,Tazewell,94,Switchbk,1,Closed,Line,NO,0.0223,0.0732,0.01876,260.0,0.0,0.0
+94,Switchbk,95,Caldwell,1,Closed,Line,NO,0.0132,0.0434,0.0111,260.0,0.0,0.0
+94,Switchbk,96,Baileysv,1,Closed,Line,NO,0.0269,0.0869,0.023,260.0,0.0,0.0
+94,Switchbk,100,Glen Lyn,1,Closed,Line,NO,0.0178,0.058,0.0604,260.0,0.0,0.0
+95,Caldwell,96,Baileysv,1,Closed,Line,NO,0.0171,0.0547,0.01474,260.0,0.0,0.0
+96,Baileysv,97,Sundial,1,Closed,Line,NO,0.0173,0.0885,0.024,520.0,0.0,0.0
+98,Bradley,100,Glen Lyn,1,Closed,Line,NO,0.0397,0.179,0.0476,520.0,0.0,0.0
+99,Hinton,100,Glen Lyn,1,Closed,Line,NO,0.018,0.0813,0.0216,520.0,0.0,0.0
+100,Glen Lyn,101,Wythe,1,Closed,Line,NO,0.0277,0.1262,0.0328,260.0,0.0,0.0
+100,Glen Lyn,103,Claytor,1,Closed,Line,NO,0.016,0.0525,0.0536,260.0,0.0,0.0
+100,Glen Lyn,104,Hancock,1,Closed,Line,NO,0.0451,0.204,0.0541,520.0,0.0,0.0
+100,Glen Lyn,106,Cloverdl,1,Closed,Line,NO,0.0605,0.229,0.062,260.0,0.0,0.0
+101,Wythe,102,Smythe,1,Closed,Line,NO,0.0246,0.112,0.0294,260.0,0.0,0.0
+103,Claytor,104,Hancock,1,Closed,Line,NO,0.0466,0.1584,0.0407,260.0,0.0,0.0
+103,Claytor,105,Roanoke,1,Closed,Line,NO,0.0535,0.1625,0.0408,520.0,0.0,0.0
+103,Claytor,110,Fieldale,1,Closed,Line,NO,0.03906,0.1813,0.0461,520.0,0.0,0.0
+104,Hancock,105,Roanoke,1,Closed,Line,NO,0.00994,0.0378,0.00986,520.0,0.0,0.0
+105,Roanoke,106,Cloverdl,1,Closed,Line,NO,0.014,0.0547,0.01434,260.0,0.0,0.0
+105,Roanoke,107,Reusens,1,Closed,Line,NO,0.053,0.183,0.0472,520.0,0.0,0.0
+105,Roanoke,108,Blaine,1,Closed,Line,NO,0.0261,0.0703,0.01844,260.0,0.0,0.0
+106,Cloverdl,107,Reusens,1,Closed,Line,NO,0.053,0.183,0.0472,520.0,0.0,0.0
+108,Blaine,109,Franklin,1,Closed,Line,NO,0.0105,0.0288,0.0076,520.0,0.0,0.0
+109,Franklin,110,Fieldale,1,Closed,Line,NO,0.0278,0.0762,0.0202,520.0,0.0,0.0
+110,Fieldale,111,DanRiver,1,Closed,Line,NO,0.022,0.0755,0.02,520.0,0.0,0.0
+110,Fieldale,112,Danville,1,Closed,Line,NO,0.0247,0.064,0.062,520.0,0.0,0.0
+114,WMedford,115,Medford,1,Closed,Line,NO,0.0023,0.0104,0.00276,520.0,0.0,0.0
