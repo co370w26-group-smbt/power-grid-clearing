@@ -2,17 +2,10 @@ from __future__ import annotations
 
 import csv
 import re
-from pathlib import Path
+
 
 import gurobipy as gp
 from gurobipy import GRB
-
-
-DATA_DIR = Path(__file__).resolve().parent
-BIDS_FILE = DATA_DIR / "bids.csv"
-SOLUTION_FILE = DATA_DIR / "solution.csv"
-USE_CONTINGENCIES = True
-
 
 def read_csv_rows(path: Path):
     # The csv files in this project use the second row as the real header.
